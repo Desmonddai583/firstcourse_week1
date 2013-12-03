@@ -84,6 +84,7 @@ loop do
   new_card = {}
   flag = false  # whether game is over
 
+  # when cards less than half, change new decks
   if deck_cards.size <= 104
     puts say('Change new decks and shuffle.')
     deck_cards = shuffle_card(deck_cards, value, suit)
@@ -99,6 +100,7 @@ loop do
   player_point = check_points(player)
   dealer_point = check_points(dealer)
 
+  # Check if any side hit blackjack at initial deal
   if player_point.include?(21) && dealer_point.include?(21)
     show_cards(player, name)
     show_cards(dealer, 'dealer')
@@ -173,6 +175,7 @@ loop do
       end
     end
 
+    # Calculate both point, whick point more closer to 21 wins
     if flag == false
       puts say('*****************************')
       show_cards(player, name)
